@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>如何学好正则表达式 | 葵花寶典</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="../favicon.ico">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="apple-touch-icon" href="/docs/icons/apple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/docs/icons/safari-pinned-tab.svg" color="#2486b9">
+    <meta name="description" content="业精于勤荒于嬉，行成于思毁于随">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="author" content="Dendi">
+    <meta name="keywords" content="vue面试题 面试题 js面试题 css面试题 React面试题 2021前端面试题">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/docs/assets/css/0.styles.a9377658.css" as="style"><link rel="preload" href="/docs/assets/js/app.52403f52.js" as="script"><link rel="preload" href="/docs/assets/js/2.38bf07ba.js" as="script"><link rel="preload" href="/docs/assets/js/1.c9f29e7f.js" as="script"><link rel="preload" href="/docs/assets/js/40.f3438c68.js" as="script"><link rel="preload" href="/docs/assets/js/21.2c9c7fe2.js" as="script"><link rel="prefetch" href="/docs/assets/js/11.e30db725.js"><link rel="prefetch" href="/docs/assets/js/12.b6d225f1.js"><link rel="prefetch" href="/docs/assets/js/13.5139ec04.js"><link rel="prefetch" href="/docs/assets/js/14.d1eb94a9.js"><link rel="prefetch" href="/docs/assets/js/15.ce97b4e3.js"><link rel="prefetch" href="/docs/assets/js/16.286b6a45.js"><link rel="prefetch" href="/docs/assets/js/17.9d383159.js"><link rel="prefetch" href="/docs/assets/js/18.85c68d64.js"><link rel="prefetch" href="/docs/assets/js/19.f0c9fba8.js"><link rel="prefetch" href="/docs/assets/js/20.1a5a13a0.js"><link rel="prefetch" href="/docs/assets/js/22.cfdf75fb.js"><link rel="prefetch" href="/docs/assets/js/23.6a779820.js"><link rel="prefetch" href="/docs/assets/js/24.32aa8719.js"><link rel="prefetch" href="/docs/assets/js/25.4c370555.js"><link rel="prefetch" href="/docs/assets/js/26.52a10032.js"><link rel="prefetch" href="/docs/assets/js/27.96cc4c13.js"><link rel="prefetch" href="/docs/assets/js/28.1d83c4cf.js"><link rel="prefetch" href="/docs/assets/js/29.a3d3441e.js"><link rel="prefetch" href="/docs/assets/js/3.b681fbd7.js"><link rel="prefetch" href="/docs/assets/js/30.d66621b4.js"><link rel="prefetch" href="/docs/assets/js/31.3574821e.js"><link rel="prefetch" href="/docs/assets/js/32.ac632026.js"><link rel="prefetch" href="/docs/assets/js/33.68367b02.js"><link rel="prefetch" href="/docs/assets/js/34.74505d3e.js"><link rel="prefetch" href="/docs/assets/js/35.421c1072.js"><link rel="prefetch" href="/docs/assets/js/36.179a9273.js"><link rel="prefetch" href="/docs/assets/js/37.76586512.js"><link rel="prefetch" href="/docs/assets/js/38.8672588a.js"><link rel="prefetch" href="/docs/assets/js/39.591fc745.js"><link rel="prefetch" href="/docs/assets/js/4.e02d5be5.js"><link rel="prefetch" href="/docs/assets/js/41.0417ebf0.js"><link rel="prefetch" href="/docs/assets/js/42.5cc10975.js"><link rel="prefetch" href="/docs/assets/js/43.047e74d9.js"><link rel="prefetch" href="/docs/assets/js/44.07cb0762.js"><link rel="prefetch" href="/docs/assets/js/45.41c6c876.js"><link rel="prefetch" href="/docs/assets/js/46.5114cc86.js"><link rel="prefetch" href="/docs/assets/js/47.7bf6a6a9.js"><link rel="prefetch" href="/docs/assets/js/48.ba7ff522.js"><link rel="prefetch" href="/docs/assets/js/49.02711d70.js"><link rel="prefetch" href="/docs/assets/js/5.bfd8aa63.js"><link rel="prefetch" href="/docs/assets/js/50.c4557e04.js"><link rel="prefetch" href="/docs/assets/js/51.5fa6042e.js"><link rel="prefetch" href="/docs/assets/js/52.4d19a492.js"><link rel="prefetch" href="/docs/assets/js/53.dc8830ff.js"><link rel="prefetch" href="/docs/assets/js/54.fe198a09.js"><link rel="prefetch" href="/docs/assets/js/55.892d546a.js"><link rel="prefetch" href="/docs/assets/js/6.355accc0.js"><link rel="prefetch" href="/docs/assets/js/7.516b3511.js"><link rel="prefetch" href="/docs/assets/js/vendors~docsearch.8ff0dd7b.js"><link rel="prefetch" href="/docs/assets/js/vendors~flowchart.fcd2dd37.js">
+    <link rel="stylesheet" href="/docs/assets/css/0.styles.a9377658.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/" class="home-link router-link-active"><img src="/docs/logo.png" alt="葵花寶典" class="logo"> <span class="site-name can-hide">葵花寶典</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="学习资料💾" class="dropdown-title"><span class="title">学习资料💾</span> <span class="arrow down"></span></button> <button type="button" aria-label="学习资料💾" class="mobile-dropdown-title"><span class="title">学习资料💾</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://es6.ruanyifeng.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  ES6 入门教程-阮一峰
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  StackOverFlow
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端面試" class="dropdown-title"><span class="title">前端面試</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端面試" class="mobile-dropdown-title"><span class="title">前端面試</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/0.0.interview.html" class="nav-link">
+  面试难题
+</a></li><li class="dropdown-item"><!----> <a href="https://vue3js.cn/interview/vue/communication.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  VUE面試題
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/docs/2.js.html" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/docs/2.2.this.html" class="nav-link">
+  This指向
+</a></li><li class="dropdown-item"><!----> <a href="/docs/2.1.array.html" class="nav-link">
+  数组方法汇总
+</a></li><li class="dropdown-item"><!----> <a href="/docs/2.3.string.html" class="nav-link">
+  字符串方法汇总
+</a></li><li class="dropdown-item"><!----> <a href="/docs/2.4.regExp.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  正则表达式
+</a></li><li class="dropdown-item"><!----> <a href="/docs/2.5.browser.html" class="nav-link">
+  浏览器
+</a></li><li class="dropdown-item"><!----> <a href="/docs/14.tamperMonkey.html" class="nav-link">
+  油侯插件
+</a></li><li class="dropdown-item"><!----> <a href="/docs/1.track.html" class="nav-link">
+  懒加载和预加载
+</a></li></ul></div></div><div class="nav-item"><a href="/docs/19.notes.html" class="nav-link">
+  项目笔记
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ES基础" class="dropdown-title"><span class="title">ES基础</span> <span class="arrow down"></span></button> <button type="button" aria-label="ES基础" class="mobile-dropdown-title"><span class="title">ES基础</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/2.1.array.html" class="nav-link">
+  TS数组API
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试题" class="dropdown-title"><span class="title">面试题</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试题" class="mobile-dropdown-title"><span class="title">面试题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.bookstack.cn/read/CS-Interview-Knowledge-Map/README.md" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  面试题
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/docs/13.promise.html" class="nav-link">
+  Promise原理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="GIT" class="dropdown-title"><span class="title">GIT</span> <span class="arrow down"></span></button> <button type="button" aria-label="GIT" class="mobile-dropdown-title"><span class="title">GIT</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/scott8013" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  我的GITHUB
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/docs/15.git.html" class="nav-link">
+  GIT常用命令
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="IDE 和 工程配置" class="dropdown-title"><span class="title">IDE 和 工程配置</span> <span class="arrow down"></span></button> <button type="button" aria-label="IDE 和 工程配置" class="mobile-dropdown-title"><span class="title">IDE 和 工程配置</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/12.vscode.html" class="nav-link">
+  VSCODE配置
+</a></li><li class="dropdown-item"><!----> <a href="/docs/14.createReact.html" class="nav-link">
+  工程配置相关
+</a></li><li class="dropdown-item"><!----> <a href="/docs/21.vue3_ts_vite.html" class="nav-link">
+  vue3 项目工程配置
+</a></li><li class="dropdown-item"><!----> <a href="/docs/3.1.vue3.html" class="nav-link">
+  vue3 快速入门
+</a></li><li class="dropdown-item"><!----> <a href="/docs/18.publish_node_package.html" class="nav-link">
+  发布NODE_PACKAGE
+</a></li><li class="dropdown-item"><!----> <a href="/docs/20.Eslint_CommitLint.react.html" class="nav-link">
+  React工程配置(Eslint CommitLint)
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据结构与算法" class="dropdown-title"><span class="title">数据结构与算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据结构与算法" class="mobile-dropdown-title"><span class="title">数据结构与算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/7.arithmetic.html" class="nav-link">
+  数据结构与算法
+</a></li><li class="dropdown-item"><!----> <a href="/docs/7.1_Array.html" class="nav-link">
+  Array
+</a></li><li class="dropdown-item"><!----> <a href="/docs/7.2_Stack.html" class="nav-link">
+  Stack
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="学习资料💾" class="dropdown-title"><span class="title">学习资料💾</span> <span class="arrow down"></span></button> <button type="button" aria-label="学习资料💾" class="mobile-dropdown-title"><span class="title">学习资料💾</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://es6.ruanyifeng.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  ES6 入门教程-阮一峰
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  StackOverFlow
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端面試" class="dropdown-title"><span class="title">前端面試</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端面試" class="mobile-dropdown-title"><span class="title">前端面試</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/0.0.interview.html" class="nav-link">
+  面试难题
+</a></li><li class="dropdown-item"><!----> <a href="https://vue3js.cn/interview/vue/communication.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  VUE面試題
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/docs/2.js.html" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/docs/2.2.this.html" class="nav-link">
+  This指向
+</a></li><li class="dropdown-item"><!----> <a href="/docs/2.1.array.html" class="nav-link">
+  数组方法汇总
+</a></li><li class="dropdown-item"><!----> <a href="/docs/2.3.string.html" class="nav-link">
+  字符串方法汇总
+</a></li><li class="dropdown-item"><!----> <a href="/docs/2.4.regExp.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  正则表达式
+</a></li><li class="dropdown-item"><!----> <a href="/docs/2.5.browser.html" class="nav-link">
+  浏览器
+</a></li><li class="dropdown-item"><!----> <a href="/docs/14.tamperMonkey.html" class="nav-link">
+  油侯插件
+</a></li><li class="dropdown-item"><!----> <a href="/docs/1.track.html" class="nav-link">
+  懒加载和预加载
+</a></li></ul></div></div><div class="nav-item"><a href="/docs/19.notes.html" class="nav-link">
+  项目笔记
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ES基础" class="dropdown-title"><span class="title">ES基础</span> <span class="arrow down"></span></button> <button type="button" aria-label="ES基础" class="mobile-dropdown-title"><span class="title">ES基础</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/2.1.array.html" class="nav-link">
+  TS数组API
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试题" class="dropdown-title"><span class="title">面试题</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试题" class="mobile-dropdown-title"><span class="title">面试题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.bookstack.cn/read/CS-Interview-Knowledge-Map/README.md" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  面试题
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/docs/13.promise.html" class="nav-link">
+  Promise原理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="GIT" class="dropdown-title"><span class="title">GIT</span> <span class="arrow down"></span></button> <button type="button" aria-label="GIT" class="mobile-dropdown-title"><span class="title">GIT</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/scott8013" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  我的GITHUB
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/docs/15.git.html" class="nav-link">
+  GIT常用命令
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="IDE 和 工程配置" class="dropdown-title"><span class="title">IDE 和 工程配置</span> <span class="arrow down"></span></button> <button type="button" aria-label="IDE 和 工程配置" class="mobile-dropdown-title"><span class="title">IDE 和 工程配置</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/12.vscode.html" class="nav-link">
+  VSCODE配置
+</a></li><li class="dropdown-item"><!----> <a href="/docs/14.createReact.html" class="nav-link">
+  工程配置相关
+</a></li><li class="dropdown-item"><!----> <a href="/docs/21.vue3_ts_vite.html" class="nav-link">
+  vue3 项目工程配置
+</a></li><li class="dropdown-item"><!----> <a href="/docs/3.1.vue3.html" class="nav-link">
+  vue3 快速入门
+</a></li><li class="dropdown-item"><!----> <a href="/docs/18.publish_node_package.html" class="nav-link">
+  发布NODE_PACKAGE
+</a></li><li class="dropdown-item"><!----> <a href="/docs/20.Eslint_CommitLint.react.html" class="nav-link">
+  React工程配置(Eslint CommitLint)
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据结构与算法" class="dropdown-title"><span class="title">数据结构与算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据结构与算法" class="mobile-dropdown-title"><span class="title">数据结构与算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/7.arithmetic.html" class="nav-link">
+  数据结构与算法
+</a></li><li class="dropdown-item"><!----> <a href="/docs/7.1_Array.html" class="nav-link">
+  Array
+</a></li><li class="dropdown-item"><!----> <a href="/docs/7.2_Stack.html" class="nav-link">
+  Stack
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/docs/2.js.html" class="sidebar-link">ES6</a></li><li><a href="/docs/3.0.vue.html" class="sidebar-link">VUE</a></li><li><a href="/docs/4.react.html" class="sidebar-link">REACT</a></li><li><a href="/docs/5.webpack.html" class="sidebar-link">WEBPACK</a></li><li><a href="/docs/6.css.html" class="sidebar-link">CSS</a></li><li><a href="/docs/7.arithmetic.html" class="sidebar-link">数据结构和算法</a></li><li><a href="/docs/8.browser.html" class="sidebar-link">浏览器</a></li><li><a href="/docs/9.http.html" class="sidebar-link">HTTP协议</a></li><li><a href="/docs/10.utils.html" class="sidebar-link">工具函数</a></li><li><a href="/docs/11.loadsh.html" class="sidebar-link">Loadsh</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="如何学好正则表达式">如何学好正则表达式</h2> <p><a href="'https://reg.coderead.cn/?u_dit=blili#/course/regex'">推荐学习地址</a></p> <h3 id="_1、正则表达式真正威力">1、正则表达式真正威力</h3> <blockquote><p>很多人对正则表达式的认识，仅停留在搜索某个字符串，或者是表单验证。这完全没有体现出正则的威力，它的使用场景比我们想象的要多。接下来分别讲述正则在工具以及编程应用中的场景。</p></blockquote> <h3 id="工具应用">工具应用</h3> <blockquote><p>主流工具几乎都支持正则表达式，可惜大多时只用来做关键字搜索，来看看它到底有哪些妙用</p></blockquote> <h4 id="_1-提取姓名">1.提取姓名</h4> <blockquote><p>在日常编码中经常需要提取文本的部分信息，比如下表的中所有的姓名：</p></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>姓名	  / 籍贯		  体重		生日
+于小彤 / 中国辽宁 / 63 KG / 1994-05-27
+张惠妹 / 台湾台东县卑南乡 / 46 KG / 1972-08-09
+沈佳妮 / 中国上海 / 51 KG / 1983-05-22
+沈丹萍 / 中国南京 / 65 KG / 1960-02-19
+王紫逸 / 中国香港 / 65 KG / 1986-12-15
+吴健 / 中国淄博 / 68 KG / 1978-01-03
+金荷娜 / 韩国 / 48 KG / 1978-02-21
+张曼玉 / 中国 / 40 KG / 1964-09-20
+薛佳凝 / 哈尔滨 / 45 KG / 1978-08-13
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><blockquote><p>没学正则之前，我是使用IDE中列选择模式，试图框选姓名区域。问题是名字是3个、2个、4个的都有，框不准，得一点点调。高手们一行正则直接搞定：^.{2,4}?。视频演示:默认静音</p></blockquote> <video width="760" height="480" controls="controls" autoplay="autoplay" muted="muted"><source src="https://reg.coderead.cn/api/static/regex/img/matchName.mp4" type="video/mp4"></video> <p>a.请匹配所有用户姓名</p> <div class="language-regex line-numbers-mode"><pre class="language-regex"><code>/<span class="token anchor function">^</span><span class="token group punctuation">(?!</span>姓名<span class="token group punctuation">)</span><span class="token char-set class-name">\S</span><span class="token quantifier number">{2,4}</span>/gm
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>姓名	  / 籍贯		  体重		生日
+于小彤 / 中国辽宁 / 63 KG / 1994-05-27
+张惠妹 / 台湾台东县卑南乡 / 46 KG / 1972-08-09
+沈佳妮 / 中国上海 / 51 KG / 1983-05-22
+沈丹萍 / 中国南京 / 65 KG / 1960-02-19
+王紫逸 / 中国香港 / 65 KG / 1986-12-15
+吴健 / 中国淄博 / 68 KG / 1978-01-03
+金荷娜 / 韩国 / 48 KG / 1978-02-21
+张曼玉 / 中国 / 40 KG / 1964-09-20
+薛佳凝 / 哈尔滨 / 45 KG / 1978-08-13
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h4 id="_2-一键删除空白行">2.一键删除空白行</h4> <div class="language-regex line-numbers-mode"><pre class="language-regex"><code>/<span class="token anchor function">^</span><span class="token char-set class-name">\s</span><span class="token quantifier number">*</span><span class="token escape">\n</span>/gm
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><div class="language-html line-numbers-mode"><pre class="language-html"><code> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+
+
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>https://cdn.bootcdn.net/highlight.min.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>app<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/save<span class="token punctuation">&quot;</span></span> <span class="token punctuation">&gt;</span></span> 保存<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span> 友情链接<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>https://www.baidu.com<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>baidu <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span>   <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>a1<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>https://www.github.com?id=f%22<span class="token punctuation">&quot;</span></span>  <span class="token punctuation">&gt;</span></span>github <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><h4 id="_3-一键删除注释">3.一键删除注释</h4> <div class="language-regex line-numbers-mode"><pre class="language-regex"><code>/<span class="token anchor function">^</span><span class="token char-set class-name">\s</span><span class="token quantifier number">*</span><span class="token escape">\n</span><span class="token alternation keyword">|</span><span class="token anchor function">^</span><span class="token char-set class-name">\s</span><span class="token quantifier number">*</span>#<span class="token char-set class-name">.</span><span class="token quantifier number">*</span><span class="token escape">\n</span>/gm
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+    #                  '$status $body_bytes_sent &quot;$http_referer&quot; '
+    #                  '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    server {
+        listen       8080;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+    include servers/*;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br></div></div><h4 id="_4-文本转sql语句">4.文本转SQL语句</h4> <div class="language-regex line-numbers-mode"><pre class="language-regex"><code>/<span class="token group punctuation">(</span><span class="token char-set class-name">.</span><span class="token quantifier number">+?</span><span class="token group punctuation">)</span> / <span class="token group punctuation">(</span><span class="token char-set class-name">.</span><span class="token quantifier number">+?</span><span class="token group punctuation">)</span> / <span class="token group punctuation">(</span><span class="token char-set class-name">\d</span><span class="token quantifier number">{2,3}</span><span class="token group punctuation">)</span> KG / <span class="token group punctuation">(</span><span class="token char-set class-name">\d</span><span class="token quantifier number">{4}</span><span class="token group punctuation">)</span><span class="token char-set class-name">.</span><span class="token group punctuation">(</span><span class="token char-set class-name">\d</span><span class="token quantifier number">{2}</span><span class="token group punctuation">)</span><span class="token char-set class-name">.</span><span class="token group punctuation">(</span><span class="token char-set class-name">\d</span><span class="token quantifier number">{2}</span><span class="token group punctuation">)</span>/gm
+
+insert into user <span class="token group punctuation">(</span>name,city,weight,birthday<span class="token group punctuation">)</span> values<span class="token group punctuation">(</span>'<span class="token anchor function">$</span>1','<span class="token anchor function">$</span>2',<span class="token anchor function">$</span>3,'<span class="token anchor function">$</span>4-<span class="token anchor function">$</span>5-<span class="token anchor function">$</span>6'<span class="token group punctuation">)</span>;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>姓名	  / 籍贯		  体重		生日
+于小彤 / 中国辽宁 / 63 KG / 1994-05-27
+张惠妹 / 台湾台东县卑南乡 / 46 KG / 1972-08-09
+沈佳妮 / 中国上海 / 51 KG / 1983-05-22
+沈丹萍 / 中国南京 / 65 KG / 1960-02-19
+王紫逸 / 中国香港 / 65 KG / 1986-12-15
+吴健 / 中国淄博 / 68 KG / 1978-01-03
+金荷娜 / 韩国 / 48 KG / 1978-02-21
+张曼玉 / 中国 / 40 KG / 1964-09-20
+薛佳凝 / 哈尔滨 / 45 KG / 1978-08-13
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h4 id="_5-密码强度验证">5.密码强度验证</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>/(?=^.{6,20}$)(?=.*[A-Z])(?=.*[a-z])(?=.*[\d]).+/gm
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>123Abd3%$^
+fli2ckfjf233
+fffa
+eiffla!@AAfb
+afffA12bfffffffffddd3333333333333333311
+123AAFFa
+fffaaa!!@23.09
+afffAAAfff33122
+1129938.exe
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h4 id="_6-添加千分符">6.添加千分符</h4> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">// javascript 代码</span>
+<span class="token string">&quot;123443333&quot;</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token group punctuation">(?!</span><span class="token anchor function">^</span><span class="token group punctuation">)</span><span class="token group punctuation">(?=</span><span class="token group punctuation">(</span><span class="token char-set class-name">\d</span><span class="token quantifier number">{3}</span><span class="token group punctuation">)</span><span class="token quantifier number">+</span><span class="token anchor function">\b</span><span class="token group punctuation">)</span></span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span><span class="token string">&quot;,&quot;</span><span class="token punctuation">)</span> <span class="token comment">//结果：123,443,333</span>
+<span class="token comment">//java 代码</span>
+<span class="token string">&quot;123443333&quot;</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">&quot;(?!^)(?=(\d{3})+\b)&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;,&quot;</span><span class="token punctuation">)</span>  <span class="token comment">//结果：123,443,333</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h4 id="_6-拆分">6.拆分</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>https://www.baidu.com/s?ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;tn=baidu&amp;wd=mybatis%20%E6%97%A5%E5%BF%97%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE&amp;oq=mybatis%2520%25E6%2597%25A5%25E5%25BF%2597%25E6%25AD%25A3%25E5%2588%2599&amp;rsv_pq=a16d1ea900004ae4&amp;rsv_t=6137Ux4uDOKYN6qOej%2Fe97zt2%2B17IQ9o8FUs039NzSuuZp81wd0ncn%2B6Oqc&amp;rqlang=cn&amp;rsv_enter=1&amp;rsv_dl=tb&amp;rsv_btype=t&amp;inputT=2275&amp;rsv_sug3=63&amp;rsv_sug1=63&amp;rsv_sug7=100&amp;rsv_sug2=0&amp;rsv_sug4=2501
+
+
+//java 代码
+&quot;https://www.baidu.com/s?ie=utf-8&amp;wd=mybatis&quot;.split(&quot;[?=&amp;]&quot;);
+//输出一个数组
+0:&quot;https://www.baidu.com/s&quot;
+1:&quot;ie&quot; // 参数名 key
+2:&quot;utf-8&quot; // 参数值 value
+3:&quot;wd&quot;
+4:&quot;mybatis&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h4 id="_7-解析url参数">7.解析URL参数</h4> <div class="language-js line-numbers-mode"><pre class="language-js"><code>  <span class="token keyword">function</span> <span class="token function">parse_url</span><span class="token punctuation">(</span><span class="token parameter">_url</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//定义函数</span>
+  <span class="token keyword">var</span> pattern <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token group punctuation">(</span><span class="token char-set class-name">\w</span><span class="token quantifier number">+</span><span class="token group punctuation">)</span>=<span class="token group punctuation">(</span><span class="token char-set class-name">\w</span><span class="token quantifier number">+</span><span class="token group punctuation">)</span></span><span class="token regex-delimiter">/</span><span class="token regex-flags">ig</span></span><span class="token punctuation">;</span><span class="token comment">//定义正则表达式</span>
+  <span class="token keyword">var</span> parames <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token comment">//定义数组</span>
+  url<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>pattern<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> <span class="token string">'111'</span><span class="token punctuation">)</span>
+    parames<span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">=</span> c<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> parames<span class="token punctuation">;</span><span class="token comment">//返回这个数组.</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> url <span class="token operator">=</span> <span class="token string">&quot;http://www.baidu.com?name=elephant&amp;age=25&amp;sex=male&quot;</span>
+<span class="token keyword">var</span> params <span class="token operator">=</span> <span class="token function">parse_url</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// [&quot;name=elephant&quot;, &quot;age=25&quot;, &quot;sex=male&quot;]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><div class="language-js line-numbers-mode"><pre class="language-js"><code>  <span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token string">&quot;http://www.baidu.com?name=elephant&amp;age=25&amp;sex=male&quot;</span>
+  <span class="token keyword">function</span> <span class="token function">getParams</span><span class="token punctuation">(</span><span class="token parameter">url<span class="token punctuation">,</span> params</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span><span class="token string">&quot;(?:&amp;|/?)&quot;</span> <span class="token operator">+</span> params <span class="token operator">+</span> <span class="token string">&quot;=([^&amp;$]+)&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> res <span class="token operator">?</span> res<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token function">getParams</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">)</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token comment">// elephant</span>
+  <span class="token keyword">const</span> age <span class="token operator">=</span> <span class="token function">getParams</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> <span class="token string">'age'</span><span class="token punctuation">)</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">十一月 9日 2023, 1:05:18 下午</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/docs/assets/js/app.52403f52.js" defer></script><script src="/docs/assets/js/2.38bf07ba.js" defer></script><script src="/docs/assets/js/1.c9f29e7f.js" defer></script><script src="/docs/assets/js/40.f3438c68.js" defer></script><script src="/docs/assets/js/21.2c9c7fe2.js" defer></script>
+  </body>
+</html>
